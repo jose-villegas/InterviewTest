@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 namespace Cards
 {
+    /// <summary>
+    /// Instances cards required for the game and animation requirements.
+    /// </summary>
     public class CardInstancer : MonoBehaviour
     {
         [SerializeField] private GameObject cardPrefab;

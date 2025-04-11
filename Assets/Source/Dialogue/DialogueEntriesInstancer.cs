@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// This class instances entries of dialogue using the <see cref="DialogueData"/>
+    /// </summary>
     [RequireComponent(typeof(AvatarFetcher))]
     public class DialogueEntriesInstancer : MonoBehaviour
     {

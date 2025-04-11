@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// Handles the next and previous buttons for the dialogue entries.
+    /// </summary>
     public class StepDialogueButtons : MonoBehaviour
     {
         [SerializeField] private RectTransform content;

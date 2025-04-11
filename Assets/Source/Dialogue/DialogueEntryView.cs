@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// Component to set up the dialogue entries with data from the <see cref="DialogueData"/>
+    /// </summary>
     public class DialogueEntryView : MonoBehaviour
     {
         [SerializeField] private TMP_Text nameLabel;

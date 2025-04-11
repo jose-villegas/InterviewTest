@@ -21,6 +21,9 @@ namespace Dialogue
         public string url { get; set; }
     }
 
+    /// <summary>
+    /// Represents the data structure for the dialogue data obtained from the game API.
+    /// </summary>
     public class DialogueData
     {
         public List<Dialogue> dialogue { get; set; }

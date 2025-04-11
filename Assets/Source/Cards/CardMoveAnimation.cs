@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Cards
@@ -22,6 +23,32 @@ namespace Cards
         {
             // start the animation
             StartCoroutine(AnimateDeckMovement());
+        }
+        
+        public void Reset()
+        {
+            // this was never used thus exit
+            if (deckParentSource.transform.childCount == 0) return;
+            
+            // move all cards back to the original position
+            var currentPosition = deckParentSource.transform.position;
+            
+            // reparent all the target cards to the source
+            while (deckParentTarget.transform.childCount > 0)
+            {
+                var card = deckParentTarget.transform.GetChild(0);
+                card.SetParent(deckParentSource.transform, true);
+            }
+            
+            // reset position of all cards within parent source
+            for (var i = 0; i < deckParentSource.transform.childCount; i++)
+            {
+                var card = deckParentSource.transform.GetChild(i);
+                card.position = currentPosition;
+                currentPosition += (Vector3) translation;
+            }
+            
+            StartAnimation();
         }
 
         private IEnumerator AnimateDeckMovement()

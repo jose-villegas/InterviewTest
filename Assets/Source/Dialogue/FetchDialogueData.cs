@@ -6,6 +6,9 @@ using UnityEngine.Networking;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// Utility class to extract dialogue data from the game API web endpoint
+    /// </summary>
     public class FetchDialogueData : MonoBehaviour
     {
         [SerializeField] private string _dialogueEndPoint =

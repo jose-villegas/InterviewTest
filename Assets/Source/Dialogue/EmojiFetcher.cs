@@ -5,6 +5,9 @@ using UnityEngine.Networking;
 
 namespace Dialogue
 {
+    /// <summary>
+    /// Utility class to obtain game emojis from the <see cref="DialogueData"/> and save their references for ease of usage
+    /// </summary>
     public class EmojiFetcher : MonoBehaviour
     {
         private Dictionary<string, Sprite> emojies;
