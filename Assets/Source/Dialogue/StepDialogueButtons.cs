@@ -87,9 +87,12 @@ namespace Dialogue
             previousButton.interactable = false;
             
             // hide current entry
-            yield return currentEntryRect.Hide();
+            currentEntryRect.Hide();
             // show target entry
-            yield return targetEntryRect.Show();
+            targetEntryRect.Show();
+            
+            // wait for the animation to finish
+            yield return new WaitForSeconds(animationDuration);
             
             // update the current index
             _currentIndex = targetIndex;

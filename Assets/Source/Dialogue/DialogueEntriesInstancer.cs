@@ -10,6 +10,7 @@ namespace Dialogue
         [SerializeField] private GameObject dialogueEntryPrefab;
         [SerializeField] private GameObject dialogueEntriesParent;
         [SerializeField] private AvatarFetcher avatarFetcher;
+        [SerializeField] private EmojiFetcher emojiFetcher;
         
         public UnityEvent<DialogueData> OnDialogueEntriesInstanced;
 
@@ -30,7 +31,7 @@ namespace Dialogue
 
                 if (dialogueEntryView != null)
                 {
-                    dialogueEntryView.Configure(dialogue, avatarFetcher);
+                    dialogueEntryView.Configure(dialogue, avatarFetcher, emojiFetcher);
                 }
                 else
                 {
@@ -41,6 +42,10 @@ namespace Dialogue
                 if (index > 0)
                 {
                     dialogueEntryView.Hide();
+                }
+                else // show the first one
+                {
+                    dialogueEntryView.Show();
                 }
             }
 
