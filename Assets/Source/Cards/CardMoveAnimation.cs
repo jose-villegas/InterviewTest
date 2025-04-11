@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Source.Instancing
+namespace Cards
 {
     public class CardMoveAnimation : MonoBehaviour
     {
@@ -11,16 +11,13 @@ namespace Source.Instancing
         [SerializeField] private float animationDuration = 2.0f;
         [SerializeField] private float animationDelay = 1f;
         [SerializeField] private Vector2 translation = Vector2.zero;
-        
+
         private void Start()
         {
             if (deckParentSource == null || deckParentTarget == null)
-            {
                 Debug.LogError("Deck Parent Source or Deck Parent Target is not assigned.");
-                return;
-            }
         }
-        
+
         public void StartAnimation()
         {
             // start the animation
@@ -33,20 +30,20 @@ namespace Source.Instancing
             var cards = deckParentSource.transform.childCount;
             var currentPosition = deckParentTarget.transform.position;
 
-            for (int i = cards - 1; i >= 0; i--)
+            for (var i = cards - 1; i >= 0; i--)
             {
                 // take the top card
                 var card = deckParentSource.transform.GetChild(i);
 
                 // move the card to the deckParentSource position on time
                 var startPosition = card.position;
-                var targetPosition = currentPosition + (Vector3)translation;
-                
+                var targetPosition = currentPosition + (Vector3) translation;
+
                 // update current position
                 currentPosition = targetPosition;
                 // reparent card
                 card.SetParent(deckParentTarget.transform, true);
-                
+
                 yield return StartCoroutine(MoveAnimation(card, startPosition, targetPosition));
             }
 
@@ -56,18 +53,18 @@ namespace Source.Instancing
         private IEnumerator MoveAnimation(Transform card, Vector3 startPosition, Vector3 targetPosition)
         {
             // move the card to the deckParentTarget position on time
-            float elapsedTime = 0f;
-                
+            var elapsedTime = 0f;
+
             while (elapsedTime < animationDuration)
             {
                 card.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / animationDuration);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-                
+
             // set the card to the target position
             card.position = targetPosition;
-                
+
             // wait before next card animation
             yield return new WaitForSeconds(animationDelay);
         }
